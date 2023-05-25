@@ -5,10 +5,11 @@ go 1.17
 require (
 	github.com/99designs/keyring v1.1.6
 	github.com/CosmWasm/wasmd v0.0.0-00010101000000-000000000000
-	github.com/bianjieai/iritamod v1.3.0
+	github.com/bianjieai/iritamod v1.3.1-0.20230525105418-83f61d5e85be
 	github.com/bianjieai/tibc-go v0.3.1-0.20220412124234-9b75094ff868
 	github.com/cosmos/cosmos-sdk v0.45.2
 	github.com/cosmos/go-bip39 v1.0.0
+	github.com/cosmos/iavl v0.17.3
 	github.com/dvsekhvalnov/jose2go v0.0.0-20201001154944-b09cfaf05951
 	github.com/ethereum/go-ethereum v1.10.16
 	github.com/ghodss/yaml v1.0.0
@@ -61,7 +62,6 @@ require (
 	github.com/confio/ics23/go v0.6.6 // indirect
 	github.com/cosmos/btcutil v1.0.4 // indirect
 	github.com/cosmos/gorocksdb v1.2.0 // indirect
-	github.com/cosmos/iavl v0.17.3 // indirect
 	github.com/cosmos/ibc-go/v2 v2.0.1 // indirect
 	github.com/cosmos/ledger-cosmos-go v0.11.1 // indirect
 	github.com/cosmos/ledger-go v0.9.2 // indirect

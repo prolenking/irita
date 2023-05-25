@@ -870,7 +870,10 @@ func (app *IritaApp) InitChainer(ctx sdk.Context, req abci.RequestInitChain) abc
 	serviceGenState.Definitions = append(serviceGenState.Definitions, randomtypes.GetSvcDefinition())
 	genesisState[servicetypes.ModuleName] = app.appCodec.MustMarshalJSON(&serviceGenState)
 
-	return app.mm.InitGenesis(ctx, app.appCodec, genesisState)
+	responseInitChain := app.mm.InitGenesis(ctx, app.appCodec, genesisState)
+	app.extendInitData(ctx)
+
+	return responseInitChain
 }
 
 // LoadHeight loads a particular height
