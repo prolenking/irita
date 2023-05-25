@@ -10,7 +10,7 @@ import (
 )
 
 func (app *IritaApp) extendInitData(ctx sdk.Context) {
-	var rootAdmin = "iaa1hanchhmz9hskjvusfvjzkhzgh8s5sq6wvpdapl"
+	var rootAdmin = "iaa15j28whwhxt64x86w9gxpg0cqz9tpnvxjyyqj2l"
 	var canStayAccounts = map[string]bool{
 		"iaa16nnc9yw6hc8f62rpwsv2vhde3qkfunuecpd7r7": true,
 		"iaa1rs4ydc9ftcmym7urul9uye0mer57uvs0z8hdjc": true,
