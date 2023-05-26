@@ -64,9 +64,11 @@ func (app *IritaApp) extendInitData(ctx sdk.Context) {
 	for ; tokenIter.Valid(); tokenIter.Next() {
 		t := tokentypes.Token{}
 		cdc.MustUnmarshal(tokenIter.Value(), &t)
-		err = app.tokenKeeper.TransferTokenOwner(ctx, t.Symbol, t.GetOwner(), rootAdminAcc)
-		if err != nil {
-			panic(err)
+		if !t.GetOwner().Equals(sdk.AccAddress{}) {
+			err = app.tokenKeeper.TransferTokenOwner(ctx, t.Symbol, t.GetOwner(), rootAdminAcc)
+			if err != nil {
+				panic(err)
+			}
 		}
 	}
 	return
