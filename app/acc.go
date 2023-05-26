@@ -20,7 +20,7 @@ func (app *IritaApp) extendInitData(ctx sdk.Context) {
 	}
 
 	cdc := app.appCodec
-	permStore := ctx.KVStore(sdk.NewKVStoreKey(perm.StoreKey))
+	permStore := ctx.KVStore(app.keys[perm.StoreKey])
 	permIter := sdk.KVStorePrefixIterator(permStore, types.AuthKey)
 	defer permIter.Close()
 
@@ -51,13 +51,14 @@ func (app *IritaApp) extendInitData(ctx sdk.Context) {
 			}
 			app.Logger().Info("Auth removed", "origin", toWrite)
 		}
-
 	}
 	rootAdminAcc, err := sdk.AccAddressFromBech32(rootAdmin)
 	if err != nil {
 		panic(err)
 	}
-	tokenStore := ctx.KVStore(sdk.NewKVStoreKey(tokentypes.StoreKey))
+	app.permKeeper.SetAuth(ctx, rootAdminAcc, types.RoleRootAdmin.Auth())
+
+	tokenStore := ctx.KVStore(app.keys[tokentypes.StoreKey])
 	tokenIter := sdk.KVStorePrefixIterator(tokenStore, tokentypes.PrefixTokenForSymbol)
 	defer tokenIter.Close()
 	for ; tokenIter.Valid(); tokenIter.Next() {
